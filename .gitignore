@@ -1,3 +1,7 @@
 .DS_Store
 __pycache__
 .vscode
+#/code/01_WholeBrainParcellation/01_DefinePowerAtlasROIs/IndividualROIs
+/code/_FyzeenTest
+.ipynb_checkpoints
+/data/local
