@@ -1,6 +1,7 @@
 function [results]=rcc_matlab(X,Y,lambda1,lambda2)
 %%%%%%%%%%%%%%%%
 % RCC for Matlab with L2-norm translated from R MixOmics
+% Code from Buch et al., Nat. Neuro., 2023
 %%%%%%%%%%%%%%%%
 
 [nrowX,ncolX]=size(X);

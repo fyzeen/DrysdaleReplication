@@ -1,4 +1,4 @@
-Run run_ROI.m on a system running MATLAB and SPM12 to get all Power atlas ROIs.
+Run run_ROI.m on a system running MATLAB, SPM12, and marsbar-0.43 to get all Power atlas ROIs.
 
 spm_get.m is a helper function for get_marsbar_rois.m which is does the majority of the work
 to define the ROIs.
