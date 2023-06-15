@@ -22,7 +22,7 @@ def correlateTimeseries(timeseries_path, out_path):
     
     Writes the Fisher z-transformed correlation matrix to the specified location.
     """
-    timeseries = pd.read_csv(timeseries_path, sep=",", engine="python")
+    timeseries = pd.read_csv(timeseries_path, sep=",")
     corr_mat = timeseries.corr()
     z_corr_mat = np.arctanh(corr_mat) # Does Fisher z-transform on correlation coefficients
     

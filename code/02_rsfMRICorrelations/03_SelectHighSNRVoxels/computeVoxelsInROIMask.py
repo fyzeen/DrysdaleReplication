@@ -19,7 +19,7 @@ def countVoxels(roi_mask):
         Number of voxesl covered by the ROI mask
     '''
     # Load the ROI mask data
-    roi_mask = nib.load('roi_mask.nii.gz')
+    roi_mask = nib.load(roi_mask)
     mask_data = roi_mask.get_fdata()
 
     # Binarize the mask
@@ -36,5 +36,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     num_voxels = countVoxels(args.roi_mask)
-    sys.exit(num_voxels)
+    print(num_voxels)
 

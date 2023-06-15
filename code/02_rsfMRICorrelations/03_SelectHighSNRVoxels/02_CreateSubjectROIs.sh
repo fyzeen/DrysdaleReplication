@@ -11,9 +11,12 @@ module load fsl
 
 ROI_MASK="/home/ahmadf/DrysdaleReplication/data/rois/highSNRROIs.nii.gz"
 
-for subj in  in `cat /home/ahmadf/DrysdaleReplication/data/subjects/ModerateOrSevere.csv` ;
+for subj in  in `cat /home/ahmadf/DrysdaleReplication/data/subjects/UNFINISHED_ModerateOrSevere.csv` ;
 do
     SUBJ_DIR="/scratch/ahmadf/DrysdaleReplication/subjects/sub_${subj}"
+
+    echo ${subj}
+
     for thresh in 50 75 90 100 ;
     do
         SNR_MASK="${SUBJ_DIR}/SNR_gt_${thresh}.nii.gz"

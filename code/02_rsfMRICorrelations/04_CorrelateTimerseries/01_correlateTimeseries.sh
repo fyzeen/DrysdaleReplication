@@ -13,7 +13,7 @@ source activate drysdale_replication
 for subj in  in `cat /home/ahmadf/DrysdaleReplication/data/subjects/ModerateOrSevere.csv` ;
 do
     SUBJ_DIR="/scratch/ahmadf/DrysdaleReplication/subjects/sub_${subj}"
-    timeseries="${SUBJ_DIR}/high_SNR_mean_timeseries_thresh100.txt"
+    timeseries="${SUBJ_DIR}/high_SNR_mean_timeseries.txt"
     corr_mat_path="${SUBJ_DIR}/corr_mat.csv"
 
     python3 /home/ahmadf/DrysdaleReplication/code/02_rsfMRICorrelations/04_CorrelateTimerseries/correlateTimeseries.py ${timeseries} ${corr_mat_path}
