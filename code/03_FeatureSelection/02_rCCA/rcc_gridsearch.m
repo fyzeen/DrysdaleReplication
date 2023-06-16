@@ -22,10 +22,11 @@ for i=1:length(lambda_range)
         templambda2 = lambda_range(j);
 
         % Perform Regularized CCA
-        [tempresults] = rcc_matlab(X_train, Y_train, templambda1, templambda2);
+        tempresults = rcc_matlab(X_train, Y_train, templambda1, templambda2);
         temp_test_CCs = diag(corr(X_test*tempresults.coeff_A, Y_test*tempresults.coeff_B));
 
         if abs(temp_test_CCs(1)) > abs(max_r)
+            max_r = temp_test_CCs(1);
             results = tempresults;
             lambda1 = templambda1;
             lambda2 = templambda2;

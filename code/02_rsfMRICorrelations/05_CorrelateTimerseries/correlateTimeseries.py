@@ -34,7 +34,7 @@ def correlateTimeseries(timeseries_path, out_path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Correlates timeseries from ROIs extracted using fslmeants.")
     parser.add_argument("timeseries_path", type=str, help="Enter path to timeseries file.")
-    parser.add_argumant("out_path", type=str, help="Enter path to directory in which to save the correlation matrix.")
+    parser.add_argument("out_path", type=str, help="Enter path to directory in which to save the correlation matrix.")
     args = parser.parse_args()
 
     correlateTimeseries(args.timeseries_path, args.out_path)

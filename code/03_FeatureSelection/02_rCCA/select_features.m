@@ -6,13 +6,13 @@ numRows = size(corr_pvals, 1);
 minValues = zeros(numRows, 1);
 
 for i=1:numRows
-    minValues(i) = min(A(i,:));
+    minValues(i) = min(corr_pvals(i,:));
 end
 
 if strcmp(method, "pval_thresh")
-    indices = find(minValues < thresh);
+    indices = find(minValues < pval_thresh);
 else 
-    [sortedValues, indices] = mink(minValues(:), topn);
+    [~, indices] = mink(minValues(:), topn);
 end
 
 if write_indices

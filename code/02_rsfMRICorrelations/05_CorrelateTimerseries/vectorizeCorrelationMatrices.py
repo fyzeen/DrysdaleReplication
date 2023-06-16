@@ -26,8 +26,8 @@ def vectorizeCorrelationMatrix(corr_mat_path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Correlates timeseries from ROIs extracted using fslmeants.")
     parser.add_argument("corr_mat_path", type=str, help="Enter the path to the correlation matrix.")
-    parser.add_argumant("path_to_csv", type=str, help="Enter path to the csv file to which you want to append the vectorized correlation matrix")
-    parser.add_argument("subject_ID", type=str, help="Enter the subject's EID. Should be in the form XXXXXX")
+    parser.add_argument("path_to_csv", type=str, help="Enter path to the csv file to which you want to append the vectorized correlation matrix")
+    parser.add_argument("subject_ID", type=str, help="Enter the subject's EID. Should be in the form XXXXXXX")
     args = parser.parse_args()
 
     vectorized_corr_mat = vectorizeCorrelationMatrix(args.corr_mat_path)

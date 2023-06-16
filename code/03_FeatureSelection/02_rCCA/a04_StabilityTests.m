@@ -1,6 +1,9 @@
-% These actually need to be read in when we have them...
-data = rand(2000, 30);
-correlates = rand(2000, 17);
+% Read in data
+correlates = readtable("/Users/fyzeen/FyzeenLocal/GitHub/DrysdaleReplication/data/local/clinical_correlates.csv", "ReadRowNames", true);
+data = readtable("/Users/fyzeen/FyzeenLocal/GitHub/DrysdaleReplication/data/local/nuisance_regressed_vectorized_corr_mat.csv", "ReadRowNames",true);
+
+% Clean correlates to be positive definite (full rank)
+correlates = correlates(:, 1:13);
 
 split_ratio = 0.9;
 num_samples = size(data, 1);
@@ -21,7 +24,13 @@ for i=1:10
     data_test = data(shuffled_indices(num_train+1:end), :);
     correlates_test = correlates(shuffled_indices(num_train+1:end), :);
 
-    % SELECT THE FEATURES HERE!!!
+    % Feature selection per iteration on the training set 
+    corr_pvals = spearman_corr(data_train, correlates_train);
+    [indices, indexed_data] = select_features(data, corr_pvals, false, NaN, "pval_thresh", NaN, 0.001);
+
+    % Cleaning matrices
+    data_train = indexed_data(shuffled_indices(1:num_train), :);
+    data_test = indexed_data(shuffled_indices(num_train+1:end), :);
 
     % Compute normal CCA
     [A,B,r,U,V,stats]=canoncorr(data_train, correlates_train);
@@ -38,19 +47,3 @@ for i=1:10
     dlmwrite('combined.csv', combined_vector, 'delimiter', ',', '-append')
 
 end
-
-
-%{
-[reg_results] = rcc_matlab(data, correlates, 0.1, 0.1);
-reg_results.r'
-reg_results.r(1)
-out = (diag(corr(data_test*reg_results.coeff_A, correlates_test*reg_results.coeff_B)))
-out(1)
-
-[A,B,r,U,V,stats] = canoncorr(data, correlates);
-r'
-diag(corr(data_test*A, correlates_test*B))
-%}
-
-
-

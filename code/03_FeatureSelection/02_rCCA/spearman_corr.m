@@ -8,12 +8,9 @@ numColumnsB = size(B, 2);
 pvals = zeros(numColumnsA, numColumnsB);
 
 for i=1:numColumnsA
-    columnA = A(:, i);
-
     for j=1:numColumnsB
-        columnB = B(:, j);
 
-        [~, pval] = corr(columnA, columnB, 'Type', 'Spearman');
+        [~, pval] = corr(A.(i), B.(j), 'Type', 'Spearman');
         
         pvals(i, j) = pval;
     end
