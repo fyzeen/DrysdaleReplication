@@ -10,7 +10,8 @@ function [out] = rcc_gridsearch(X_train,Y_train, X_test, Y_test)
 %   data (test_CCs)
     
 % The range of lambdas (hyperparameters) as described in Grosenick et al.
-lambda_range = [0, 0.1, 1, 10, 100, 1000, 1e6, 1e9];
+%   and a two other values (0.001, 0.01)
+lambda_range = [0, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 1e6, 1e9];
 
 max_r = 0;
 

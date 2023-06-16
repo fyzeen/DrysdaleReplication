@@ -21,7 +21,7 @@ for i=1:10
     % Split the data
     data_train = data(shuffled_indices(1:num_train), :);
     correlates_train = correlates(shuffled_indices(1:num_train), :);
-    data_test = data(shuffled_indices(num_train+1:end), :);
+    %data_test = data(shuffled_indices(num_train+1:end), :);
     correlates_test = correlates(shuffled_indices(num_train+1:end), :);
 
     % Feature selection per iteration on the training set 

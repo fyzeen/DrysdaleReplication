@@ -6,7 +6,7 @@ data = readtable("/Users/fyzeen/FyzeenLocal/GitHub/DrysdaleReplication/data/loca
 correlates = correlates(:, 1:13);
 
 % Define the number of cross-validation folds
-numFolds = 3;
+numFolds = 10;
 
 % Initialize variables to store the canonical variates and fold assignments
 canonicalLoadingsA = cell(numFolds, 1);
