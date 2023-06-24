@@ -5,10 +5,10 @@ correlates = correlates(:, 1:13);
 
 % Feature Selection
 corr_pvals = spearman_corr(data, correlates);
-[indices, indexed_data] = select_features(data, corr_pvals, false, NaN, "pval_thresh", NaN, 0.001);
+[indices, indexed_data] = select_features(data, corr_pvals, false, NaN, "other", 1839, NaN);
 
 % We now split the data into train and test for gridsearch
-split_ratio = 0.99; %%% Making this larger typically leads to larger CCs
+split_ratio = 0.90; %%% Making this larger typically leads to larger CCs
 
 num_samples = size(indexed_data, 1);
 % Calculate the number of samples for training and testing
@@ -30,3 +30,7 @@ correlates_test = table2array(correlates(shuffled_indices(num_train+1:end), :));
 
 
 % Save output (probably just save U and V (canonical covariates), A and B (loadings))
+tableU = array2table(out.variate_U);
+tableU.Properties.RowNames = correlates.Properties.RowNames;
+tableV = array2table(out.variate_V);
+tableV.Properties.RowNames = correlates.Properties.RowNames;
