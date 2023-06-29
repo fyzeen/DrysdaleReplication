@@ -7,7 +7,7 @@ correlates = correlates(:, 1:13);
 
 % Feature Selection
 corr_pvals = spearman_corr(data, correlates);
-[indices, indexed_data] = select_features(data, corr_pvals, false, NaN, "pval_thresh", NaN, 0.005);
+[indices, indexed_data] = select_features(data, corr_pvals, false, NaN, "other", 150, NaN);
 
 % Perform CCA on entire dataset
 [A,B,r,U,V,stats] = canoncorr(table2array(indexed_data), table2array(correlates));
